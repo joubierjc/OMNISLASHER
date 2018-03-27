@@ -13,5 +13,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   identifier: PlayerShot
   template: {fileID: 1330105140649034, guid: be1f1316d22fbb940a6ed0cc21429299, type: 2}
-  initialSize: 1
+  initialSize: 10
   canGrow: 1

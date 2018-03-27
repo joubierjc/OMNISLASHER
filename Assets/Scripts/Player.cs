@@ -70,7 +70,11 @@ public class Player : MonoBehaviour {
 			}
 		}
 		if (nearest) {
-			transform.LookAt(nearest);
+			transform.LookAt(new Vector3(
+				nearest.position.x,
+				transform.position.y,
+				nearest.position.z
+			));
 		}
 	}
 }

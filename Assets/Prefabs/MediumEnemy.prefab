@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4469886910635362}
   - component: {fileID: 54385357275843072}
   - component: {fileID: 114536860899779740}
+  - component: {fileID: 114061192661368154}
   m_Layer: 0
   m_Name: MediumEnemy
   m_TagString: Untagged
@@ -252,6 +253,18 @@ TrailRenderer:
     generateLightingData: 0
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
+--- !u!114 &114061192661368154
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1002919125274980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cd8a007f49b60b48953cde931a66fd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _lifePoint: 3
 --- !u!114 &114536860899779740
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -264,6 +277,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  trail: {fileID: 96586376067133104}
 --- !u!135 &135127182970072514
 SphereCollider:
   m_ObjectHideFlags: 1

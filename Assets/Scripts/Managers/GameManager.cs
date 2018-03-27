@@ -19,19 +19,19 @@ public class GameManager : UnitySingleton<GameManager> {
 		CurrentEnemies.AddRange(FindObjectsOfType<Enemy>());
 	}
 
-	private void Start() {
+	public void StartSpawning() {
 		StartCoroutine(Round());
 	}
 
 	private IEnumerator Round() {
 		while (true) {
 			SpawnEnemy();
-			yield return new WaitForSeconds(5);
+			yield return new WaitForSeconds(1);
 		}
 	}
 
 	private void SpawnEnemy() {
-		var go = PoolManager.Instance.GetObjectFrom("Enemy");
+		var go = PoolManager.Instance.GetObjectFrom("MediumEnemy");
 		go.transform.position = new Vector3(
 			Random.Range(boundary.Xmin, boundary.Xmax),
 			go.transform.position.y,

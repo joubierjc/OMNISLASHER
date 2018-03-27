@@ -26,6 +26,7 @@ public class Enemy : MonoBehaviour {
 	}
 
 	private void OnEnable() {
+		GetComponent<Health>().LifePoint = 3;
 		GameManager.Instance.CurrentEnemies.Add(this);
 		if (trail) {
 			trail.Clear();

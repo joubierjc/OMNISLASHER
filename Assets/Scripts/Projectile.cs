@@ -29,7 +29,10 @@ public class Projectile : MonoBehaviour {
 	}
 
 	private void OnTriggerEnter(Collider other) {
+		var health = other.GetComponentInParent<Health>();
+		if (health) {
+			health.LifePoint--;
+		}
 		gameObject.SetActive(false);
 	}
-
 }

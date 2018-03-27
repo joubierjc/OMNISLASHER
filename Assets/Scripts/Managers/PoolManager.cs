@@ -11,6 +11,7 @@ public class PoolManager : UnitySingleton<PoolManager> {
 		foreach (var item in _pools) {
 			item.Init();
 		}
+		GameManager.Instance.StartSpawning();
 	}
 
 	public GameObject GetObjectFrom(string poolIdentifier) {

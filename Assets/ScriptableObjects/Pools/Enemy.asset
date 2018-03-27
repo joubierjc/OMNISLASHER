@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a5f94ae6dd526747989992e7d829eff, type: 3}
   m_Name: Enemy
   m_EditorClassIdentifier: 
-  identifier: Enemy
+  identifier: MediumEnemy
   template: {fileID: 1002919125274980, guid: 1868529553992f04390d9ece44c63ffd, type: 2}
-  initialSize: 1
+  initialSize: 10
   canGrow: 1
