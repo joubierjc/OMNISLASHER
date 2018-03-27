@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour {
 
 	[SerializeField]
 	private float speed;
-	[SerializeField]
+
 	private Transform target;
 
 	private Rigidbody rb;
@@ -16,8 +16,13 @@ public class Enemy : MonoBehaviour {
 		rb = GetComponent<Rigidbody>();
 	}
 
+	private void Start() {
+		target = EntityManager.Instance.CurrentPlayer.transform;
+	}
+
 	private void FixedUpdate() {
 		rb.MovePosition(Vector3.MoveTowards(rb.position, target.position, speed * Time.fixedDeltaTime));
 	}
+
 
 }

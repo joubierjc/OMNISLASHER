@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Player : MonoBehaviour {
@@ -19,7 +17,7 @@ public class Player : MonoBehaviour {
 			Input.GetAxis("Horizontal"),
 			0f,
 			Input.GetAxis("Vertical")
-		);
+		).normalized;
 
 		rb.MovePosition(rb.position + direction * speed * Time.fixedDeltaTime);
 	}

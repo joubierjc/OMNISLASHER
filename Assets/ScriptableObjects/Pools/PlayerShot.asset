@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a5f94ae6dd526747989992e7d829eff, type: 3}
+  m_Name: PlayerShot
+  m_EditorClassIdentifier: 
+  identifier: PlayerShot
+  template: {fileID: 1753287542732648, guid: be1f1316d22fbb940a6ed0cc21429299, type: 2}
+  initialSize: 20
+  canGrow: 1
