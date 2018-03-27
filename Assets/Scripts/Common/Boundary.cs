@@ -1,7 +1,7 @@
 ﻿[System.Serializable]
-public struct Boundary {
+public class Boundary {
 	public float Xmax;
-	public float Ymax;
 	public float Xmin;
-	public float Ymin;
+	public float Zmax;
+	public float Zmin;
 }

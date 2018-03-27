@@ -5,14 +5,21 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class Projectile : MonoBehaviour {
 
+	[SerializeField]
 	private float speed;
+	[SerializeField]
+	private TrailRenderer trail;
 
 	private Rigidbody rb;
-	private TrailRenderer trail;
+	private new Transform transform;
 
 	private void Awake() {
 		rb = GetComponent<Rigidbody>();
-		trail = GetComponent<TrailRenderer>();
+		transform = GetComponent<Transform>();
+	}
+
+	private void Update() {
+		transform.Translate(Vector3.forward * speed * Time.deltaTime);
 	}
 
 	private void OnEnable() {
@@ -22,7 +29,7 @@ public class Projectile : MonoBehaviour {
 	}
 
 	private void OnTriggerEnter(Collider other) {
-
+		gameObject.SetActive(false);
 	}
 
 }

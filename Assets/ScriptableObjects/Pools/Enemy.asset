@@ -9,9 +9,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5a5f94ae6dd526747989992e7d829eff, type: 3}
-  m_Name: PlayerShot
+  m_Name: Enemy
   m_EditorClassIdentifier: 
-  identifier: PlayerShot
-  template: {fileID: 1330105140649034, guid: be1f1316d22fbb940a6ed0cc21429299, type: 2}
+  identifier: Enemy
+  template: {fileID: 1002919125274980, guid: 1868529553992f04390d9ece44c63ffd, type: 2}
   initialSize: 1
   canGrow: 1

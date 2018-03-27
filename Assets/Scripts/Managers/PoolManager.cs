@@ -5,6 +5,26 @@ using UnityEngine;
 public class PoolManager : UnitySingleton<PoolManager> {
 
 	[SerializeField]
-	private List<ObjectPool> _pools = new List<ObjectPool>();
+	private ObjectPool[] _pools;
+
+	private void Start() {
+		foreach (var item in _pools) {
+			item.Init();
+		}
+	}
+
+	public GameObject GetObjectFrom(string poolIdentifier) {
+		ObjectPool pool = null;
+		foreach (var item in _pools) {
+			if (item.identifier.Equals(poolIdentifier)) {
+				pool = item;
+				break;
+			}
+		}
+		if (pool != null) {
+			return pool.GetObject();
+		}
+		return null;
+	}
 
 }

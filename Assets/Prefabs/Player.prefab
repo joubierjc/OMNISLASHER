@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4147118351004892}
   - component: {fileID: 54565599608708534}
   - component: {fileID: 114794521016583464}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 135767110243685736}
   - component: {fileID: 23506245866843036}
   - component: {fileID: 96089243091519286}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4784275571379362}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,7 +117,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: b23e9dd0c0f65ef48a32e956de9c9f69, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -264,6 +264,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 25
+  fireCooldown: 0.4
+  boundary:
+    Xmax: 0
+    Xmin: 0
+    Zmax: 0
+    Zmin: 0
 --- !u!135 &135767110243685736
 SphereCollider:
   m_ObjectHideFlags: 1
