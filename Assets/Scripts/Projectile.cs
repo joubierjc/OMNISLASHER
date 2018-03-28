@@ -10,6 +10,8 @@ public class Projectile : MonoBehaviour {
 	[SerializeField]
 	private TrailRenderer trail;
 
+	private Vector3 direction;
+
 	private Rigidbody rb;
 	private new Transform transform;
 
@@ -31,7 +33,7 @@ public class Projectile : MonoBehaviour {
 	private void OnTriggerEnter(Collider other) {
 		var health = other.GetComponentInParent<Health>();
 		if (health) {
-			health.LifePoint--;
+			health.Value--;
 		}
 		gameObject.SetActive(false);
 	}

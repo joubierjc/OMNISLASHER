@@ -10,17 +10,19 @@ public class GameManager : UnitySingleton<GameManager> {
 
 	public List<Enemy> CurrentEnemies { get; private set; }
 
-	protected override void Awake() {
-		base.Awake();
+	private void Start() {
+		// Inits
+		Init();
+		PoolManager.Instance.Init();
 
+		StartCoroutine(Round());
+	}
+
+	public void Init() {
 		CurrentPlayer = FindObjectOfType<Player>();
 
 		CurrentEnemies = new List<Enemy>();
 		CurrentEnemies.AddRange(FindObjectsOfType<Enemy>());
-	}
-
-	public void StartSpawning() {
-		StartCoroutine(Round());
 	}
 
 	private IEnumerator Round() {

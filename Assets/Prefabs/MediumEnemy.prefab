@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114061192661368154}
   m_Layer: 0
   m_Name: MediumEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -195,7 +195,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.5
+  m_Time: 0.2
   m_Parameters:
     serializedVersion: 2
     widthMultiplier: 2
@@ -211,8 +211,8 @@ TrailRenderer:
       - serializedVersion: 2
         time: 1
         value: 0
-        inSlope: 0
-        outSlope: 0
+        inSlope: -3.1384609
+        outSlope: -3.1384609
         tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -264,7 +264,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd8a007f49b60b48953cde931a66fd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _lifePoint: 3
+  _value: 0
 --- !u!114 &114536860899779740
 MonoBehaviour:
   m_ObjectHideFlags: 1

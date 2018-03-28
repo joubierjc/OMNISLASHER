@@ -7,6 +7,8 @@ public class Player : MonoBehaviour {
 	private float speed;
 	[SerializeField]
 	private float fireCooldown;
+	[SerializeField]
+	private float maxRange;
 
 	private Transform target;
 
@@ -27,10 +29,10 @@ public class Player : MonoBehaviour {
 	}
 
 	private void Update() {
-		LookAtNearestEnemy();
+		AcquireTarget();
 
 		nextFire += Time.deltaTime;
-		if (nextFire >= fireCooldown) {
+		if (target && nextFire >= fireCooldown) {
 			Shot();
 			nextFire = 0;
 		}
@@ -53,28 +55,26 @@ public class Player : MonoBehaviour {
 	}
 
 	private void Shot() {
-		var shot = PoolManager.Instance.GetObjectFrom("PlayerShot");
-		shot.transform.position = transform.position;
-		shot.transform.rotation = transform.localRotation;
-		shot.SetActive(true);
+		var go = PoolManager.Instance.GetObjectFrom("PlayerShot");
+		go.transform.position = transform.position;
+		go.transform.LookAt(new Vector3(
+			target.position.x,
+			go.transform.position.y,
+			target.position.z
+		));
+		go.SetActive(true);
 	}
 
-	private void LookAtNearestEnemy() {
+	private void AcquireTarget() {
 		Transform nearest = null;
 		var minDist = Mathf.Infinity;
 		foreach (var item in GameManager.Instance.CurrentEnemies) {
 			var dist = Vector3.Distance(item.transform.position, transform.position);
-			if (dist < minDist) {
+			if (dist < maxRange && dist < minDist) {
 				nearest = item.transform;
 				minDist = dist;
 			}
 		}
-		if (nearest) {
-			transform.LookAt(new Vector3(
-				nearest.position.x,
-				transform.position.y,
-				nearest.position.z
-			));
-		}
+		target = nearest;
 	}
 }

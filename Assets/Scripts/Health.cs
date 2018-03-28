@@ -5,14 +5,14 @@ using UnityEngine;
 public class Health : MonoBehaviour {
 
 	[SerializeField]
-	private float _lifePoint;
-	public float LifePoint {
+	private float _value;
+	public float Value {
 		get {
-			return _lifePoint;
+			return _value;
 		}
 		set {
-			_lifePoint = value;
-			if (_lifePoint <= 0) {
+			_value = value;
+			if (_value <= 0) {
 				gameObject.SetActive(false);
 			}
 		}
