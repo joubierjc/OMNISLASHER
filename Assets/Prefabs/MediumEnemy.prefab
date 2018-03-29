@@ -278,6 +278,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   trail: {fileID: 96586376067133104}
+  mesh: {fileID: 23483248574376636}
+  coll: {fileID: 135127182970072514}
 --- !u!135 &135127182970072514
 SphereCollider:
   m_ObjectHideFlags: 1

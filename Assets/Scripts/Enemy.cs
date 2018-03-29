@@ -5,24 +5,27 @@ using DG.Tweening;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(Health))]
-[RequireComponent(typeof(MeshRenderer))]
 public class Enemy : MonoBehaviour {
 
 	[SerializeField]
 	private float speed;
 	[SerializeField]
 	private TrailRenderer trail;
+	[SerializeField]
+	private MeshRenderer mesh;
+	[SerializeField]
+	private Collider coll;
 
 	private Transform target;
 	private Rigidbody rb;
-	private MeshRenderer mesh;
 	private Health hp;
 
 	private bool canPlay = false;
 
+	private WaitForSeconds meshBlink = new WaitForSeconds(.25f);
+
 	private void Awake() {
 		rb = GetComponent<Rigidbody>();
-		mesh = GetComponent<MeshRenderer>();
 		hp = GetComponent<Health>();
 	}
 
@@ -31,7 +34,9 @@ public class Enemy : MonoBehaviour {
 	}
 
 	private void FixedUpdate() {
-		rb.MovePosition(Vector3.MoveTowards(rb.position, target.position, speed * Time.fixedDeltaTime));
+		if (canPlay) {
+			rb.MovePosition(Vector3.MoveTowards(rb.position, target.position, speed * Time.fixedDeltaTime));
+		}
 	}
 
 	private void OnEnable() {
@@ -40,17 +45,31 @@ public class Enemy : MonoBehaviour {
 		if (trail) {
 			trail.Clear();
 		}
-		StartCoroutine(Spawn());
+		if (mesh && coll) {
+			StartCoroutine(SpawnAnim());
+		}
 	}
 
 	private void OnDisable() {
 		GameManager.Instance.CurrentEnemies.Remove(this);
-		StopCoroutine(Spawn());
+		if (mesh && coll) {
+			StopCoroutine(SpawnAnim());
+		}
+		canPlay = false;
 	}
 
-
-	private IEnumerator Spawn() {
-
+	private IEnumerator SpawnAnim() {
+		rb.isKinematic = true;
+		coll.enabled = false;
+		for (int i = 0; i < 2; i++) {
+			mesh.enabled = false;
+			yield return meshBlink;
+			mesh.enabled = true;
+			yield return meshBlink;
+		}
+		coll.enabled = true;
+		rb.isKinematic = false;
+		canPlay = true;
 	}
 
 }
