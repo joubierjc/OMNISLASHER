@@ -1,17 +1,21 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class Weapon : MonoBehaviour {
 
 	[SerializeField]
-	private string objectPool;
+	private string poolIdentifier;
 	[SerializeField]
-	private Transform[] shotSpawns;
+	private Transform[] shotSpawn;
 
 	public void Shoot() {
-		foreach (var item in shotSpawns) {
-			var go = PoolManager.Instance.GetObjectFrom(objectPool);
+		foreach (var item in shotSpawn) {
+			if (!item.gameObject.activeInHierarchy) {
+				continue;
+			}
+			var go = PoolManager.Instance.GetObjectFrom(poolIdentifier);
 			if (go) {
-				// set world to local
 				go.transform.position = item.position;
 				go.transform.rotation = item.rotation;
 				go.SetActive(true);

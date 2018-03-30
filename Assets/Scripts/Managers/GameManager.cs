@@ -13,6 +13,7 @@ public class GameManager : UnitySingleton<GameManager> {
 	private void Start() {
 		// Inits
 		Init();
+		TimeManager.Instance.Init();
 		PoolManager.Instance.Init();
 
 		StartCoroutine(Round());
@@ -28,7 +29,7 @@ public class GameManager : UnitySingleton<GameManager> {
 	private IEnumerator Round() {
 		while (true) {
 			SpawnEnemy();
-			yield return new WaitForSeconds(2.5f);
+			yield return new WaitForSeconds(1f);
 		}
 	}
 

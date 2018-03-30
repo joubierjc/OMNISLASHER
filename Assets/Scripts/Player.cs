@@ -1,56 +1,81 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(Weapon))]
 public class Player : MonoBehaviour {
 
-	[SerializeField]
-	private float speed;
-	[SerializeField]
-	private float fireCooldown;
+	[Header("Combat")]
 	[SerializeField]
 	private float maxRange;
 	[SerializeField]
-	private GameObject weaponPrefab;
+	private float attackPerSecond;
+	private float FireInterval {
+		get {
+			return attackPerSecond == 0f ? 0f : 1 / attackPerSecond;
+		}
+	}
+
+	[Header("Movement")]
+	[SerializeField]
+	private float speed;
+
+	[Header("Collision")]
+	[SerializeField]
+	private float bumpFactor;
+	[SerializeField]
+	private float disableDuration;
 
 	private Transform target;
-
 	private Boundary boundary;
+
 	private Rigidbody rb;
 	private new Transform transform;
+	private Weapon weapon;
+
+	private bool hasBeenTouched = false;
 
 	private float nextFire;
-	private Weapon weapon;
 
 	private void Awake() {
 		rb = GetComponent<Rigidbody>();
 		transform = GetComponent<Transform>();
-		InitWeapon();
+		weapon = GetComponent<Weapon>();
 	}
 
 	private void Start() {
 		target = null;
-		nextFire = fireCooldown;
+		nextFire = FireInterval;
 		boundary = GameManager.Instance.boundary;
 	}
 
 	private void Update() {
-		AcquireTarget();
+		if (hasBeenTouched) {
+			return;
+		}
 
+		AcquireTarget();
 		nextFire += Time.deltaTime;
-		if (target && nextFire >= fireCooldown && weapon) {
+		if (target && nextFire >= FireInterval && weapon) {
+			transform.LookAt(new Vector3(
+				target.position.x,
+				transform.position.y,
+				target.position.z
+			));
 			weapon.Shoot();
 			nextFire = 0;
 		}
 	}
 
 	private void FixedUpdate() {
-		var direction = new Vector3(
-			Input.GetAxis("Horizontal"),
-			0f,
-			Input.GetAxis("Vertical")
-		).normalized;
+		if (!hasBeenTouched) {
+			var direction = new Vector3(
+				Input.GetAxis("Horizontal"),
+				0f,
+				Input.GetAxis("Vertical")
+			).normalized;
 
-		rb.velocity = direction * speed;
+			rb.velocity = direction * speed;
+		}
 
 		transform.position = new Vector3(
 			Mathf.Clamp(transform.position.x, boundary.Xmin, boundary.Xmax),
@@ -59,11 +84,13 @@ public class Player : MonoBehaviour {
 		);
 	}
 
-	private void InitWeapon() {
-		if (weaponPrefab) {
-			var go = Instantiate(weaponPrefab, transform.position, transform.rotation);
-			go.transform.SetParent(transform);
-			weapon = weaponPrefab.GetComponent<Weapon>();
+	private void OnCollisionEnter(Collision collision) {
+		if (collision.gameObject.CompareTag("Enemy")) {
+			CancelInvoke("ResetHasBeenTouched");
+			hasBeenTouched = true;
+			TimeManager.Instance.EnterSlowMotion();
+			rb.AddForce(collision.contacts[0].normal.normalized * bumpFactor, ForceMode.Impulse);
+			Invoke("ResetHasBeenTouched", disableDuration);
 		}
 	}
 
@@ -78,5 +105,9 @@ public class Player : MonoBehaviour {
 			}
 		}
 		target = nearest;
+	}
+
+	private void ResetHasBeenTouched() {
+		hasBeenTouched = false;
 	}
 }
