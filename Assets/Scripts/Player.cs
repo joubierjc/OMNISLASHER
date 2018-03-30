@@ -9,17 +9,22 @@ public class Player : MonoBehaviour {
 	private float fireCooldown;
 	[SerializeField]
 	private float maxRange;
+	[SerializeField]
+	private GameObject weaponPrefab;
 
 	private Transform target;
 
-	private float nextFire;
 	private Boundary boundary;
 	private Rigidbody rb;
 	private new Transform transform;
 
+	private float nextFire;
+	private Weapon weapon;
+
 	private void Awake() {
 		rb = GetComponent<Rigidbody>();
 		transform = GetComponent<Transform>();
+		InitWeapon();
 	}
 
 	private void Start() {
@@ -32,8 +37,8 @@ public class Player : MonoBehaviour {
 		AcquireTarget();
 
 		nextFire += Time.deltaTime;
-		if (target && nextFire >= fireCooldown) {
-			Shot();
+		if (target && nextFire >= fireCooldown && weapon) {
+			weapon.Shoot();
 			nextFire = 0;
 		}
 	}
@@ -54,15 +59,12 @@ public class Player : MonoBehaviour {
 		);
 	}
 
-	private void Shot() {
-		var go = PoolManager.Instance.GetObjectFrom("PlayerShot");
-		go.transform.position = transform.position;
-		go.transform.LookAt(new Vector3(
-			target.position.x,
-			go.transform.position.y,
-			target.position.z
-		));
-		go.SetActive(true);
+	private void InitWeapon() {
+		if (weaponPrefab) {
+			var go = Instantiate(weaponPrefab, transform.position, transform.rotation);
+			go.transform.SetParent(transform);
+			weapon = weaponPrefab.GetComponent<Weapon>();
+		}
 	}
 
 	private void AcquireTarget() {

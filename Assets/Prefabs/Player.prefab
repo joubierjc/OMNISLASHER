@@ -266,6 +266,8 @@ MonoBehaviour:
   speed: 25
   fireCooldown: 0.4
   maxRange: 25
+  weaponPrefab: {fileID: 1667361945882704, guid: a11fdf29f6db2814aa4881d0d3385c07,
+    type: 2}
 --- !u!135 &135767110243685736
 SphereCollider:
   m_ObjectHideFlags: 1

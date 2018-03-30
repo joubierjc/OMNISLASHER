@@ -10,6 +10,8 @@ public class Enemy : MonoBehaviour {
 	[SerializeField]
 	private float speed;
 	[SerializeField]
+	private float maxHealth;
+	[SerializeField]
 	private TrailRenderer trail;
 	[SerializeField]
 	private MeshRenderer mesh;
@@ -40,7 +42,7 @@ public class Enemy : MonoBehaviour {
 	}
 
 	private void OnEnable() {
-		hp.Value = 3;
+		hp.Value = maxHealth;
 		GameManager.Instance.CurrentEnemies.Add(this);
 		if (trail) {
 			trail.Clear();
@@ -62,11 +64,12 @@ public class Enemy : MonoBehaviour {
 		rb.isKinematic = true;
 		coll.enabled = false;
 		for (int i = 0; i < 2; i++) {
-			mesh.enabled = false;
-			yield return meshBlink;
 			mesh.enabled = true;
 			yield return meshBlink;
+			mesh.enabled = false;
+			yield return meshBlink;
 		}
+		mesh.enabled = true;
 		coll.enabled = true;
 		rb.isKinematic = false;
 		canPlay = true;
