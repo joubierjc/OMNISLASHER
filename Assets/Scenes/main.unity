@@ -303,6 +303,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 114794521016583464, guid: b992567711433214ab663c9b5ffce8ac,
+        type: 2}
+      propertyPath: bumpFactor
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b992567711433214ab663c9b5ffce8ac, type: 2}
   m_IsPrefabParent: 0
@@ -335,9 +340,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialTimeScale: 1
   slowMotionTimeScale: 0.5
-  slowMotionDuration: 0.5
-  transitionDuration: 0.5
-  resetTransitionDuration: 0.2
+  slowMotionDuration: 1
+  transitionDuration: 0.2
+  resetTransitionDuration: 0.5
   ease: 18
 --- !u!4 &542264719
 Transform:

@@ -30,13 +30,10 @@ public class Player : MonoBehaviour {
 	private Tween collisionTween;
 
 	private Transform target;
-	private Boundary boundary;
 
 	private Rigidbody rb;
 	private new Transform transform;
 	private Weapon weapon;
-
-	private bool hasBeenTouched = false;
 
 	private float nextFire;
 
@@ -49,14 +46,9 @@ public class Player : MonoBehaviour {
 	private void Start() {
 		target = null;
 		nextFire = FireInterval;
-		boundary = GameManager.Instance.boundary;
 	}
 
 	private void Update() {
-		//if (hasBeenTouched) {
-		//	return;
-		//}
-
 		AcquireTarget();
 		nextFire += Time.deltaTime;
 		if (target && nextFire >= FireInterval && weapon) {
@@ -97,7 +89,7 @@ public class Player : MonoBehaviour {
 			// enter slow motion and add impulse
 			TimeManager.Instance.EnterSlowMotion();
 			rb.velocity = Vector3.zero;
-			rb.AddForce(collision.contacts[0].normal.normalized * bumpFactor, ForceMode.Impulse);
+			rb.AddForce(collision.contacts[0].normal.normalized * speed * bumpFactor, ForceMode.Impulse);
 		}
 	}
 
@@ -112,10 +104,6 @@ public class Player : MonoBehaviour {
 			}
 		}
 		target = nearest;
-	}
-
-	private void ResetHasBeenTouched() {
-		hasBeenTouched = false;
 	}
 
 }

@@ -34,7 +34,7 @@ public class TimeManager : UnitySingleton<TimeManager> {
 
 	public void ResetTimeScale() {
 		slowMotionTween.Kill();
-		slowMotionTween = DOTween.To(() => Time.timeScale, x => Time.timeScale = x, 1f, resetTransitionDuration)
+		slowMotionTween = DOTween.To(() => Time.timeScale, x => Time.timeScale = x, initialTimeScale, resetTransitionDuration)
 			.SetEase(ease);
 	}
 
