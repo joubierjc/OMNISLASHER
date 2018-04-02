@@ -383,8 +383,9 @@ MonoBehaviour:
   maxRange: 25
   attackPerSecond: 2.5
   speed: 25
-  bumpFactor: 25
-  disableDuration: 0.5
+  decelerationFactor: 0.5
+  bumpFactor: 100
+  disableDuration: 1
 --- !u!114 &114993008625730944
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using DG.Tweening;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(Weapon))]
@@ -18,12 +19,15 @@ public class Player : MonoBehaviour {
 	[Header("Movement")]
 	[SerializeField]
 	private float speed;
+	[SerializeField]
+	private float decelerationFactor;
 
 	[Header("Collision")]
 	[SerializeField]
 	private float bumpFactor;
 	[SerializeField]
 	private float disableDuration;
+	private Tween collisionTween;
 
 	private Transform target;
 	private Boundary boundary;
@@ -49,9 +53,9 @@ public class Player : MonoBehaviour {
 	}
 
 	private void Update() {
-		if (hasBeenTouched) {
-			return;
-		}
+		//if (hasBeenTouched) {
+		//	return;
+		//}
 
 		AcquireTarget();
 		nextFire += Time.deltaTime;
@@ -67,30 +71,33 @@ public class Player : MonoBehaviour {
 	}
 
 	private void FixedUpdate() {
-		if (!hasBeenTouched) {
-			var direction = new Vector3(
-				Input.GetAxis("Horizontal"),
-				0f,
-				Input.GetAxis("Vertical")
-			).normalized;
+		var h = Input.GetAxis("Horizontal");
+		var z = Input.GetAxis("Vertical");
 
-			rb.velocity = direction * speed;
-		}
-
-		transform.position = new Vector3(
-			Mathf.Clamp(transform.position.x, boundary.Xmin, boundary.Xmax),
-			transform.position.y,
-			Mathf.Clamp(transform.position.z, boundary.Zmin, boundary.Zmax)
+		var direction = new Vector3(
+			h,
+			0f,
+			z
 		);
+
+		rb.AddForce(direction * speed, ForceMode.Impulse);
+
+		var clamped = Vector3.ClampMagnitude(new Vector3(rb.velocity.x, 0f, rb.velocity.z), speed);
+		rb.velocity = new Vector3(clamped.x * decelerationFactor, rb.velocity.y, clamped.z * decelerationFactor);
 	}
 
 	private void OnCollisionEnter(Collision collision) {
 		if (collision.gameObject.CompareTag("Enemy")) {
-			CancelInvoke("ResetHasBeenTouched");
-			hasBeenTouched = true;
+			// changing deceleration factor to have a better impulse
+			collisionTween.Complete(false);
+			var df = decelerationFactor;
+			decelerationFactor = decelerationFactor * 4;
+			collisionTween = DOTween.To(() => decelerationFactor, x => decelerationFactor = x, df, disableDuration); //setting up the tween to reset the deceleration factor
+
+			// enter slow motion and add impulse
 			TimeManager.Instance.EnterSlowMotion();
+			rb.velocity = Vector3.zero;
 			rb.AddForce(collision.contacts[0].normal.normalized * bumpFactor, ForceMode.Impulse);
-			Invoke("ResetHasBeenTouched", disableDuration);
 		}
 	}
 
@@ -110,4 +117,5 @@ public class Player : MonoBehaviour {
 	private void ResetHasBeenTouched() {
 		hasBeenTouched = false;
 	}
+
 }

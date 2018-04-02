@@ -12,11 +12,9 @@ public class Projectile : MonoBehaviour {
 
 	private Vector3 direction;
 
-	private Rigidbody rb;
 	private new Transform transform;
 
 	private void Awake() {
-		rb = GetComponent<Rigidbody>();
 		transform = GetComponent<Transform>();
 	}
 

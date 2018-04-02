@@ -18,7 +18,6 @@ public class TimeManager : UnitySingleton<TimeManager> {
 	[SerializeField]
 	private Ease ease = Ease.Linear;
 
-	private int calls = 0;
 	private Tween slowMotionTween;
 
 	public void Init() {
@@ -35,7 +34,7 @@ public class TimeManager : UnitySingleton<TimeManager> {
 
 	public void ResetTimeScale() {
 		slowMotionTween.Kill();
-		slowMotionTween = DOTween.To(() => Time.timeScale, x => Time.timeScale = x, 1f, transitionDuration)
+		slowMotionTween = DOTween.To(() => Time.timeScale, x => Time.timeScale = x, 1f, resetTransitionDuration)
 			.SetEase(ease);
 	}
 
