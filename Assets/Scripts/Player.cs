@@ -87,7 +87,7 @@ public class Player : MonoBehaviour {
 			collisionTween = DOTween.To(() => decelerationFactor, x => decelerationFactor = x, df, disableDuration); //setting up the tween to reset the deceleration factor
 
 			// screen shake
-			Camera.main.GetComponent<ScreenShaker>().ShakeScreen(0.2f);
+			Camera.main.GetComponent<ScreenShaker>().ShakeScreen(1f, 1f);
 
 			// enter slow motion and add impulse
 			TimeManager.Instance.EnterSlowMotion();

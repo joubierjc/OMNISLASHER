@@ -274,7 +274,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 116
   m_CollisionDetection: 1
 --- !u!96 &96089243091519286
 TrailRenderer:
@@ -384,7 +384,7 @@ MonoBehaviour:
   attackPerSecond: 2.5
   speed: 25
   decelerationFactor: 0.5
-  bumpFactor: 100
+  bumpFactor: 10
   disableDuration: 1
 --- !u!114 &114993008625730944
 MonoBehaviour:
