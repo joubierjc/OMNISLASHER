@@ -335,9 +335,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialTimeScale: 1
   slowMotionTimeScale: 0.5
-  slowMotionDuration: 1
+  slowMotionDuration: 0.5
   transitionDuration: 0.2
-  resetTransitionDuration: 0.5
+  resetTransitionDuration: 1
   ease: 18
 --- !u!4 &542264719
 Transform:

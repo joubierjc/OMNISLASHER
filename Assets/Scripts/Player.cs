@@ -48,29 +48,25 @@ public class Player : MonoBehaviour {
 		nextFire = FireInterval;
 	}
 
-	private void Update() {
-		AcquireTarget();
-		nextFire += Time.deltaTime;
-		if (target && nextFire >= FireInterval && weapon) {
-			transform.LookAt(new Vector3(
-				target.position.x,
-				transform.position.y,
-				target.position.z
-			));
-			weapon.Shoot();
-			nextFire = 0;
-		}
-	}
+	//private void Update() {
+	//	AcquireTarget();
+	//	nextFire += Time.deltaTime;
+	//	if (target && nextFire >= FireInterval && weapon) {
+	//		transform.LookAt(new Vector3(
+	//			target.position.x,
+	//			transform.position.y,
+	//			target.position.z
+	//		));
+	//		weapon.Shoot();
+	//		nextFire = 0;
+	//	}
+	//}
 
 	private void FixedUpdate() {
 		var h = Input.GetAxis("Horizontal");
 		var z = Input.GetAxis("Vertical");
 
-		var direction = new Vector3(
-			h,
-			0f,
-			z
-		);
+		var direction = new Vector3(h, 0f, z);
 
 		rb.AddForce(direction * speed, ForceMode.Impulse);
 
@@ -80,6 +76,11 @@ public class Player : MonoBehaviour {
 
 	private void OnCollisionEnter(Collision collision) {
 		if (collision.gameObject.CompareTag("Enemy")) {
+			var hp = collision.gameObject.GetComponent<Health>();
+			if (hp) {
+				hp.Value--;
+			}
+
 			// changing deceleration factor to have a better impulse
 			collisionTween.Complete(false);
 			var df = decelerationFactor;
@@ -89,8 +90,10 @@ public class Player : MonoBehaviour {
 			// screen shake
 			Camera.main.GetComponent<ScreenShaker>().ShakeScreen(1f, 1f);
 
-			// enter slow motion and add impulse
+			// slow motion
 			TimeManager.Instance.EnterSlowMotion();
+
+			// add impulse
 			rb.velocity = Vector3.zero;
 			rb.AddForce(collision.contacts[0].normal.normalized * speed * bumpFactor, ForceMode.Impulse);
 		}
