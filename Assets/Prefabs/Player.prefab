@@ -20,8 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4147118351004892}
   - component: {fileID: 54565599608708534}
-  - component: {fileID: 114794521016583464}
-  - component: {fileID: 114993008625730944}
+  - component: {fileID: 114830097543109246}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -369,7 +368,7 @@ TrailRenderer:
     generateLightingData: 0
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
---- !u!114 &114794521016583464
+--- !u!114 &114830097543109246
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -377,31 +376,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1149375822876814}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9046b6a12d9f31408f698f5e255893c, type: 3}
+  m_Script: {fileID: 11500000, guid: 8ead6989e9ee10a4498f222983b213e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxRange: 25
-  attackPerSecond: 2.5
   speed: 25
   decelerationFactor: 0.5
   bumpFactor: 10
-  disableDuration: 1
---- !u!114 &114993008625730944
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1149375822876814}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cda0bef98f2672149a175a5e9a14d01a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  poolIdentifier: PlayerShot
-  shotSpawn:
-  - {fileID: 4807937693462044}
-  - {fileID: 4327532259998110}
-  - {fileID: 4919021413369670}
+  disableDuration: 0.5
 --- !u!135 &135767110243685736
 SphereCollider:
   m_ObjectHideFlags: 1
