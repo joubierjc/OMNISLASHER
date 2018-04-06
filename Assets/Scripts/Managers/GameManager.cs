@@ -5,26 +5,16 @@ using UnityEngine;
 public class GameManager : UnitySingleton<GameManager> {
 
 	public Boundary boundary;
-
-	public Player CurrentPlayer { get; private set; }
-
-	public List<Enemy> CurrentEnemies { get; private set; }
+	public Player CurrentPlayer;
 
 	private void Start() {
 		// Inits
-		Init();
 		TimeManager.Instance.Init();
 		PoolManager.Instance.Init();
 
-		//StartCoroutine(Round());
+		StartCoroutine(Round());
 	}
 
-	public void Init() {
-		CurrentPlayer = FindObjectOfType<Player>();
-
-		CurrentEnemies = new List<Enemy>();
-		CurrentEnemies.AddRange(FindObjectsOfType<Enemy>());
-	}
 
 	private IEnumerator Round() {
 		while (true) {
@@ -34,7 +24,10 @@ public class GameManager : UnitySingleton<GameManager> {
 	}
 
 	private void SpawnEnemy() {
-		var go = PoolManager.Instance.GetObjectFrom("MediumEnemy");
+		var go = PoolManager.Instance.GetObjectFrom("CloseEnemy");
+		if (!go) {
+			return;
+		}
 		go.transform.position = new Vector3(
 			Random.Range(boundary.Xmin, boundary.Xmax),
 			go.transform.position.y,

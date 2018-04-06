@@ -1,76 +1,65 @@
 ﻿using System.Collections;
+using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(Health))]
 public class Enemy : MonoBehaviour {
 
-	[SerializeField]
-	private float speed;
-	[SerializeField]
-	private float maxHealth;
-	[SerializeField]
-	private TrailRenderer trail;
-	[SerializeField]
-	private MeshRenderer mesh;
-	[SerializeField]
-	private Collider coll;
+	public float maxHealth;
 
-	private Transform target;
-	private Rigidbody rb;
-	private Health hp;
+	[Header("Aesthetic (Optionnal)")]
+	public MeshRenderer[] meshRenderers;
+	public Collider[] colliders;
+	public TrailRenderer[] trails;
 
-	private bool canPlay = false;
+	protected new Transform transform;
+	protected Rigidbody rb;
+	protected Health hp;
 
-	private WaitForSeconds meshBlink = new WaitForSeconds(.25f);
-
-	private void Awake() {
+	protected virtual void Awake() {
+		transform = GetComponent<Transform>();
 		rb = GetComponent<Rigidbody>();
 		hp = GetComponent<Health>();
 	}
 
-	private void Start() {
-		target = GameManager.Instance.CurrentPlayer.transform;
-	}
-
-	private void FixedUpdate() {
-		if (canPlay) {
-			rb.MovePosition(Vector3.MoveTowards(rb.position, target.position, speed * Time.fixedDeltaTime));
-		}
-	}
-
-	private void OnEnable() {
+	protected virtual void OnEnable() {
 		hp.Value = maxHealth;
-		GameManager.Instance.CurrentEnemies.Add(this);
-		if (trail) {
-			trail.Clear();
+		foreach (var item in trails) {
+			item.Clear();
 		}
-		if (mesh && coll) {
+		if (meshRenderers.Any() && colliders.Any()) {
 			StartCoroutine(SpawnAnim());
 		}
 	}
 
-	private void OnDisable() {
-		GameManager.Instance.CurrentEnemies.Remove(this);
-		if (mesh && coll) {
+	protected virtual void OnDisable() {
+		if (meshRenderers.Any() && colliders.Any()) {
 			StopCoroutine(SpawnAnim());
 		}
-		canPlay = false;
 	}
 
-	private IEnumerator SpawnAnim() {
+	protected virtual IEnumerator SpawnAnim() {
 		rb.isKinematic = true;
-		coll.enabled = false;
-		for (int i = 0; i < 2; i++) {
-			mesh.enabled = true;
-			yield return meshBlink;
-			mesh.enabled = false;
-			yield return meshBlink;
+		foreach (var item in colliders) {
+			item.enabled = false;
 		}
-		mesh.enabled = true;
-		coll.enabled = true;
+		for (int i = 0; i < 2; i++) {
+			foreach (var item in meshRenderers) {
+				item.enabled = true;
+			}
+			yield return new WaitForSeconds(.25f);
+			foreach (var item in meshRenderers) {
+				item.enabled = false;
+			}
+			yield return new WaitForSeconds(.25f);
+		}
+		foreach (var item in meshRenderers) {
+			item.enabled = true;
+		}
+		foreach (var item in colliders) {
+			item.enabled = true;
+		}
 		rb.isKinematic = false;
-		canPlay = true;
 	}
-
 }

@@ -9,9 +9,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5a5f94ae6dd526747989992e7d829eff, type: 3}
-  m_Name: Enemy
+  m_Name: CloseEnemy
   m_EditorClassIdentifier: 
-  identifier: MediumEnemy
-  template: {fileID: 1002919125274980, guid: 1868529553992f04390d9ece44c63ffd, type: 2}
-  initialSize: 10
+  identifier: CloseEnemy
+  template: {fileID: 1834915199303786, guid: 5ce38c75a79c11140b2062a5f4ad05e1, type: 2}
+  initialSize: 1
   canGrow: 1

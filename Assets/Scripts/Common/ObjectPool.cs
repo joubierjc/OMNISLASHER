@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Object Pool/New Object Pool")]
@@ -27,14 +26,11 @@ public class ObjectPool : ScriptableObject {
 				return pooledObjects[i];
 			}
 		}
-
 		if (canGrow) {
 			var go = Instantiate(template);
 			pooledObjects.Add(go);
 			return go;
 		}
-
 		return null;
 	}
-
 }

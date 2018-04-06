@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33506023231838844}
   - component: {fileID: 65198997889219180}
   - component: {fileID: 23636438324558610}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Limite (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 33099092258939112}
   - component: {fileID: 65513242235136114}
   - component: {fileID: 23468798946672974}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Limite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4394310698582598}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Limites
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 33603761237122042}
   - component: {fileID: 65355714908759864}
   - component: {fileID: 23696355969397452}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Limite (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 33874068623839812}
   - component: {fileID: 65952805584741022}
   - component: {fileID: 23210403851288496}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Limite (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

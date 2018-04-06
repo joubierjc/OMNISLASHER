@@ -16,9 +16,9 @@ TagManager:
   - 
   - 
   - Player
-  - PlayerShot
   - Enemy
-  - 
+  - EnemyDamager
+  - Limits
   - 
   - 
   - 
