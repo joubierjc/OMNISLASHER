@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.17893638, g: 0.22405514, b: 0.30589887, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -114,33 +114,33 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &62737827
+--- !u!1 &61516847
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 62737829}
-  - component: {fileID: 62737828}
+  - component: {fileID: 61516849}
+  - component: {fileID: 61516848}
   m_Layer: 0
-  m_Name: Directional Light
+  m_Name: BlueLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!108 &62737828
+--- !u!108 &61516848
 Light:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 62737827}
+  m_GameObject: {fileID: 61516847}
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 1
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.5
+  m_Color: {r: 0.05948276, g: 0, b: 0.49019608, a: 1}
+  m_Intensity: 1.2
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -166,19 +166,19 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!4 &62737829
+--- !u!4 &61516849
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 62737827}
-  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
+  m_GameObject: {fileID: 61516847}
+  m_LocalRotation: {x: 0.38943484, y: -0.4765906, z: 0.24809738, w: 0.74809736}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 55, y: -65, z: 0}
 --- !u!1 &270879047
 GameObject:
   m_ObjectHideFlags: 0
@@ -274,7 +274,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4046955533373822, guid: b992567711433214ab663c9b5ffce8ac, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4046955533373822, guid: b992567711433214ab663c9b5ffce8ac, type: 2}
       propertyPath: m_LocalPosition.y
@@ -363,7 +363,7 @@ GameObject:
   - component: {fileID: 698950896}
   - component: {fileID: 698950895}
   m_Layer: 0
-  m_Name: Directional Light (1)
+  m_Name: RedLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -379,7 +379,7 @@ Light:
   serializedVersion: 8
   m_Type: 1
   m_Color: {r: 1, g: 0, b: 0, a: 1}
-  m_Intensity: 1.5
+  m_Intensity: 1.2
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -411,13 +411,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 698950894}
-  m_LocalRotation: {x: 0.20605277, y: 0.8534518, z: -0.2834413, w: 0.38577634}
+  m_LocalRotation: {x: 0.24809735, y: 0.74809736, z: -0.38943484, w: 0.47659057}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 40, y: 135, z: 10}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 55, y: 115, z: 0}
 --- !u!1 &836548934
 GameObject:
   m_ObjectHideFlags: 0
