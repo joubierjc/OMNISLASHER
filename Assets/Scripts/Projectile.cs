@@ -3,10 +3,8 @@
 [RequireComponent(typeof(Rigidbody))]
 public class Projectile : MonoBehaviour {
 
-	[SerializeField]
-	private float speed;
-	[SerializeField]
-	private TrailRenderer trail;
+	public float speed;
+	public TrailRenderer trail;
 
 	private Vector3 direction;
 

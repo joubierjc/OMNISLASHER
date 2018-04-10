@@ -3,18 +3,12 @@ using UnityEngine;
 
 public class TimeManager : UnitySingleton<TimeManager> {
 
-	[SerializeField]
-	private float initialTimeScale = 1f;
-	[SerializeField]
-	private float slowMotionTimeScale = 0.2f;
-	[SerializeField]
-	private float slowMotionDuration = 2f;
-	[SerializeField]
-	private float transitionDuration = 1f;
-	[SerializeField]
-	private float resetTransitionDuration = 2f;
-	[SerializeField]
-	private Ease ease = Ease.Linear;
+	public float initialTimeScale = 1f;
+	public float slowMotionTimeScale = 0.2f;
+	public float slowMotionDuration = 2f;
+	public float transitionDuration = 1f;
+	public float resetTransitionDuration = 2f;
+	public Ease ease = Ease.Linear;
 
 	private Tween slowMotionTween;
 

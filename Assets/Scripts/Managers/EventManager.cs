@@ -1,9 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 
-public class EventManager : UnitySingleton<EventManager> {
+public class EventManager {
 
 	private Dictionary<string, List<Action<object>>> _events = new Dictionary<string, List<Action<object>>>();
+
+	private static EventManager _instance;
+	public static EventManager Instance {
+		get {
+			if (_instance == null) {
+				_instance = new EventManager();
+			}
+			return _instance;
+		}
+	}
 
 	public void On(string eventName, Action<object> callback) {
 		if (_events.ContainsKey(eventName)) {

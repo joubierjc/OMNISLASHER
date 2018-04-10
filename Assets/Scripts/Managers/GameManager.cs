@@ -6,6 +6,7 @@ public class GameManager : UnitySingleton<GameManager> {
 
 	public Boundary boundary;
 	public Player CurrentPlayer;
+	public int score;
 
 	private void Start() {
 		// Inits
@@ -14,7 +15,6 @@ public class GameManager : UnitySingleton<GameManager> {
 
 		StartCoroutine(Round());
 	}
-
 
 	private IEnumerator Round() {
 		while (true) {
@@ -35,4 +35,6 @@ public class GameManager : UnitySingleton<GameManager> {
 		);
 		go.SetActive(true);
 	}
+
+
 }

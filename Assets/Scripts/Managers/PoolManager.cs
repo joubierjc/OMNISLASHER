@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class PoolManager : UnitySingleton<PoolManager> {
 
-	[SerializeField]
-	private ObjectPool[] _pools;
+	public ObjectPool[] _pools;
 
 	public void Init() {
 		foreach (var item in _pools) {

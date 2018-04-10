@@ -1,10 +1,9 @@
 ﻿using UnityEngine;
 
 public class Rotator : MonoBehaviour {
-	[SerializeField]
-	private Vector3 axis;
-	[SerializeField]
-	private float angle;
+
+	public Vector3 axis;
+	public float angle;
 
 	private new Transform transform;
 
