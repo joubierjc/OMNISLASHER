@@ -8,6 +8,10 @@ public class Enemy : MonoBehaviour {
 
 	public float maxHealth;
 
+	[Header("Rotation")]
+	[Range(0f, 1f)]
+	public float rotationFactor;
+
 	[Header("Aesthetic (Optionnal)")]
 	public MeshRenderer[] meshRenderers;
 	public Collider[] colliders;
@@ -17,10 +21,22 @@ public class Enemy : MonoBehaviour {
 	protected Rigidbody rb;
 	protected Health hp;
 
+	protected Transform target;
+
 	protected virtual void Awake() {
 		transform = GetComponent<Transform>();
 		rb = GetComponent<Rigidbody>();
 		hp = GetComponent<Health>();
+	}
+
+	protected virtual void Start() {
+		target = GameManager.Instance.CurrentPlayer.transform;
+	}
+
+	protected virtual void Update() {
+		var modifiedTarget = new Vector3(target.position.x, transform.position.y, target.position.z);
+		var targetRotation = Quaternion.LookRotation(modifiedTarget - transform.position);
+		transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationFactor);
 	}
 
 	protected virtual void OnEnable() {
