@@ -1,10 +1,20 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class RangedEnemy : Enemy {
 
-	[Header("Movement")]
-	public float speed;
+	[Header("Ranged Settings")]
 	public float fleeFactor;
+	public Transform shotSpawn;
+	public float shotInterval;
+
+	protected override void OnEnable() {
+		StartCoroutine(ShotCoroutine());
+	}
+
+	protected override void OnDisable() {
+		StopCoroutine(ShotCoroutine());
+	}
 
 	private void FixedUpdate() {
 		rb.AddRelativeForce(Vector3.forward * speed, ForceMode.Impulse);
@@ -14,5 +24,22 @@ public class RangedEnemy : Enemy {
 
 		var clamped = Vector3.ClampMagnitude(new Vector3(rb.velocity.x, 0f, rb.velocity.z), speed);
 		rb.velocity = new Vector3(clamped.x, rb.velocity.y, clamped.z);
+	}
+
+	private IEnumerator ShotCoroutine() {
+		while (true) {
+			yield return new WaitForSeconds(shotInterval);
+			SpawnProjectile();
+		}
+	}
+
+	private void SpawnProjectile() {
+		var go = PoolManager.Instance.GetObjectFrom("EnemyProjectile");
+		if (!go) {
+			return;
+		}
+		go.transform.position = shotSpawn.position;
+		go.transform.rotation = shotSpawn.rotation;
+		go.SetActive(true);
 	}
 }

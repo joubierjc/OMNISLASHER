@@ -12,6 +12,9 @@ public class Enemy : MonoBehaviour {
 	[Range(0f, 1f)]
 	public float rotationFactor;
 
+	[Header("Movement")]
+	public float speed;
+
 	[Header("Aesthetic (Optionnal)")]
 	public MeshRenderer[] meshRenderers;
 	public Collider[] colliders;

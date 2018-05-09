@@ -2,9 +2,6 @@
 
 public class CloseEnemy : Enemy {
 
-	[Header("Movement")]
-	public float speed;
-
 	private void FixedUpdate() {
 		rb.AddRelativeForce(Vector3.forward * speed, ForceMode.Impulse);
 

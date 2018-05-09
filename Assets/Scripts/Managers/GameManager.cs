@@ -35,6 +35,4 @@ public class GameManager : UnitySingleton<GameManager> {
 		);
 		go.SetActive(true);
 	}
-
-
 }

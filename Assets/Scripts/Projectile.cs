@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Projectile : MonoBehaviour {
 
+	public float timeBeforeDisable;
 	public float speed;
 	public TrailRenderer trail;
 
@@ -24,11 +26,12 @@ public class Projectile : MonoBehaviour {
 		}
 	}
 
-	private void OnTriggerEnter(Collider other) {
-		var health = other.GetComponentInParent<Health>();
-		if (health) {
-			health.Value--;
-		}
+	private void OnCollisionEnter(Collision collision) {
+		gameObject.SetActive(false);
+	}
+
+	private IEnumerator DisableCoroutine() {
+		yield return new WaitForSeconds(timeBeforeDisable);
 		gameObject.SetActive(false);
 	}
 }
