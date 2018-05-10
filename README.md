@@ -6,12 +6,12 @@
 - [x] refacto de Enemy, qui n'est plus à jour avec le gameplay
 - [x] Finir CloseEnemy
 - [x] Finir RangedEnemy
+- [ ] PlayerProjectile
 - [ ] PlayerSpecials
 	- [ ] HealthUp -> redonne 1HP
 	- [ ] AimingShots -> tir 5 PlayerProjectile vers les Enemy
 	- [ ] Omnislash -> instakill tous les Enemy proche
 		- [ ] Anim cool
-- [ ] PlayerProjectile
 - [ ] Pools
 	- [ ] RangedEnemy
 	- [ ] PlayerProjectile
