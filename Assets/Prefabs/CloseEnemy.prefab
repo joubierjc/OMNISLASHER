@@ -335,6 +335,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 1
+  reward: 15
+  rotationFactor: 0.025
+  speed: 8
   meshRenderers:
   - {fileID: 23959266497662198}
   - {fileID: 23924933817990836}
@@ -343,9 +346,6 @@ MonoBehaviour:
   - {fileID: 65507845736145172}
   trails:
   - {fileID: 96337642583340874}
-  rotationFactor: 0.025
-  speed: 8
-  decelerationFactor: 0.5
 --- !u!114 &114232193711317014
 MonoBehaviour:
   m_ObjectHideFlags: 1

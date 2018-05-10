@@ -695,12 +695,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 1
+  reward: 20
   rotationFactor: 0.05
   speed: 1
   meshRenderers:
   - {fileID: 23023931655332744}
+  - {fileID: 23571291935445346}
+  - {fileID: 23908586246792348}
+  - {fileID: 23981080969695144}
+  - {fileID: 23497483761655450}
   colliders:
   - {fileID: 65525687305909364}
+  - {fileID: 65778321899430944}
+  - {fileID: 65103119634240920}
+  - {fileID: 65173537074884640}
+  - {fileID: 65570898345930954}
   trails:
   - {fileID: 96629463178853392}
   fleeFactor: 25

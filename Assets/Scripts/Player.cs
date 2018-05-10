@@ -8,6 +8,8 @@ public class Player : MonoBehaviour {
 
 	[Header("Combat")]
 	public float maxHealth;
+	public float currentEnergy;
+	public float maxEnergy;
 
 	[Header("Movement")]
 	public float speed;
@@ -43,6 +45,10 @@ public class Player : MonoBehaviour {
 
 	private void OnEnable() {
 		hp.Value = maxHealth;
+		HudManager.Instance.ChangeHealthDisplay(hp.Value);
+		currentEnergy = 0f;
+		HudManager.Instance.ChangeEnergyDisplay(currentEnergy);
+
 	}
 
 	private void OnCollisionEnter(Collision collision) {
@@ -69,10 +75,13 @@ public class Player : MonoBehaviour {
 
 		if (damager) {
 			hp.Value -= damager.value;
+			HudManager.Instance.ChangeHealthDisplay(hp.Value);
 		}
 
 		if (health) {
 			health.Value -= dmg.value;
+			currentEnergy += dmg.value;
+			HudManager.Instance.ChangeEnergyDisplay(currentEnergy);
 		}
 	}
 }

@@ -7,6 +7,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour {
 
 	public float maxHealth;
+	public int reward;
 
 	[Header("Rotation")]
 	[Range(0f, 1f)]
@@ -55,6 +56,9 @@ public class Enemy : MonoBehaviour {
 	protected virtual void OnDisable() {
 		if (meshRenderers.Any() && colliders.Any()) {
 			StopCoroutine(SpawnAnim());
+		}
+		if (hp.Value <= 0f) {
+			GameManager.Instance.AddScore(reward);
 		}
 	}
 

@@ -8,8 +8,6 @@ public class Projectile : MonoBehaviour {
 	public float speed;
 	public TrailRenderer trail;
 
-	private Vector3 direction;
-
 	private new Transform transform;
 
 	private void Awake() {

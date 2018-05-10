@@ -9,10 +9,12 @@ public class RangedEnemy : Enemy {
 	public float shotInterval;
 
 	protected override void OnEnable() {
+		base.OnEnable();
 		StartCoroutine(ShotCoroutine());
 	}
 
 	protected override void OnDisable() {
+		base.OnDisable();
 		StopCoroutine(ShotCoroutine());
 	}
 

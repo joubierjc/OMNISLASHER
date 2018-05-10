@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class GameManager : UnitySingleton<GameManager> {
 
@@ -8,12 +9,26 @@ public class GameManager : UnitySingleton<GameManager> {
 	public Player CurrentPlayer;
 	public int score;
 
+	private Tween scoreTween;
+
 	private void Start() {
 		// Inits
 		TimeManager.Instance.Init();
 		PoolManager.Instance.Init();
 
 		StartCoroutine(Round());
+	}
+
+	public void AddScore(int value) {
+		scoreTween.Kill();
+		scoreTween = DOTween.To(() => score,
+			x => {
+				score = x;
+				HudManager.Instance.RefreshScoreText();
+			},
+			score + value,
+			HudManager.Instance.transitionsDuration
+		);
 	}
 
 	private IEnumerator Round() {
