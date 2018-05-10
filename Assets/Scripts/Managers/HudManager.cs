@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
@@ -21,10 +19,6 @@ public class HudManager : UnitySingleton<HudManager> {
 	private Tween healthBarTween;
 	private Tween energyBarTween;
 
-	protected override void Awake() {
-		base.Awake();
-	}
-
 	public void ChangeHealthDisplay(float newValue) {
 		healthBarTween.Kill();
 		healthBarTween = DOTween.To(() => healthBarSlider.value, x => healthBarSlider.value = x, newValue, transitionsDuration);
@@ -38,14 +32,14 @@ public class HudManager : UnitySingleton<HudManager> {
 	}
 
 	public void RefreshScoreText() {
-		scoreText.text = GameManager.Instance.score.ToString();
+		scoreText.SetText("{0:0}", GameManager.Instance.score);
 	}
 
 	public void RefreshHealthText(float newValue) {
-		healthText.text = newValue.ToString();
+		healthText.SetText("{0:0}", newValue);
 	}
 
 	public void RefreshEnergyText(float newValue) {
-		energyText.text = newValue.ToString();
+		energyText.SetText("{0:0}", newValue);
 	}
 }

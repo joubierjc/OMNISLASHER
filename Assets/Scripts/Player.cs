@@ -31,6 +31,11 @@ public class Player : MonoBehaviour {
 		dmg = GetComponent<Damager>();
 	}
 
+	private void Update() {
+		currentEnergy = Mathf.Clamp(currentEnergy + (Time.deltaTime * 2), 0f, maxEnergy);
+		HudManager.Instance.ChangeEnergyDisplay(currentEnergy);
+	}
+
 	private void FixedUpdate() {
 		var h = Input.GetAxis("Horizontal");
 		var z = Input.GetAxis("Vertical");
@@ -48,7 +53,6 @@ public class Player : MonoBehaviour {
 		HudManager.Instance.ChangeHealthDisplay(hp.Value);
 		currentEnergy = 0f;
 		HudManager.Instance.ChangeEnergyDisplay(currentEnergy);
-
 	}
 
 	private void OnCollisionEnter(Collision collision) {
@@ -80,8 +84,9 @@ public class Player : MonoBehaviour {
 
 		if (health) {
 			health.Value -= dmg.value;
-			currentEnergy += dmg.value;
+			currentEnergy = Mathf.Clamp(currentEnergy + dmg.value, 0f, maxEnergy);
 			HudManager.Instance.ChangeEnergyDisplay(currentEnergy);
 		}
 	}
+
 }

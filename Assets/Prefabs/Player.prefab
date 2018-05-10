@@ -27,6 +27,7 @@ GameObject:
   - component: {fileID: 114413589695899514}
   - component: {fileID: 114554024227577606}
   - component: {fileID: 114382454473353054}
+  - component: {fileID: 114382050443688368}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -196,6 +197,19 @@ TrailRenderer:
     generateLightingData: 0
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
+--- !u!114 &114382050443688368
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1062409318923222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac7d02317e877cf4a897c705d700920f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skills:
+  - {fileID: 11400000, guid: 30e79248dab1cca40aa19be9088adf5f, type: 2}
 --- !u!114 &114382454473353054
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -221,7 +235,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 3
   currentEnergy: 0
-  maxEnergy: 150
+  maxEnergy: 120
   speed: 20
   decelerationFactor: 0.5
   bumpFactor: 10
