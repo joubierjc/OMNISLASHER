@@ -210,6 +210,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skills:
   - {fileID: 11400000, guid: 30e79248dab1cca40aa19be9088adf5f, type: 2}
+  - {fileID: 11400000, guid: bcfcb6788c756f1418957c2d8dfe0f9f, type: 2}
+  - {fileID: 11400000, guid: fc22de091e4006940b8255777d79b5e4, type: 2}
+  currentSkill: {fileID: 0}
 --- !u!114 &114382454473353054
 MonoBehaviour:
   m_ObjectHideFlags: 1

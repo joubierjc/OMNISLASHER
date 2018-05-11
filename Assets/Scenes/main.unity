@@ -879,6 +879,7 @@ MonoBehaviour:
   healthText: {fileID: 1186891835}
   energyBarSlider: {fileID: 1322917376}
   energyText: {fileID: 1034650277}
+  specialText: {fileID: 1192795665}
 --- !u!1 &542264717
 GameObject:
   m_ObjectHideFlags: 0
@@ -1596,7 +1597,7 @@ GameObject:
   - component: {fileID: 1192795666}
   - component: {fileID: 1192795665}
   m_Layer: 5
-  m_Name: SpecialHintText
+  m_Name: SpecialText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -14,6 +14,7 @@ public class HudManager : UnitySingleton<HudManager> {
 	public TextMeshProUGUI healthText;
 	public Slider energyBarSlider;
 	public TextMeshProUGUI energyText;
+	public TextMeshProUGUI specialText;
 
 	private Tween scoreTween;
 	private Tween healthBarTween;
@@ -41,5 +42,9 @@ public class HudManager : UnitySingleton<HudManager> {
 
 	public void RefreshEnergyText(float newValue) {
 		energyText.SetText("{0:0}", newValue);
+	}
+
+	public void RefreshSpecialText(string newValue) {
+		specialText.text = newValue;
 	}
 }

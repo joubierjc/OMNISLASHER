@@ -10,7 +10,7 @@ public class Slash : Skill {
 	public LayerMask layer;
 	public Ease ease;
 
-	public IEnumerator CastCoroutine() {
+	public override IEnumerator CastCoroutine() {
 		if (!holder.gameObject.activeInHierarchy) {
 			yield break;
 		}

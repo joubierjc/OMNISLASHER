@@ -6,6 +6,8 @@ public abstract class Skill : ScriptableObject {
 	[HideInInspector]
 	public Transform holder;
 
-	public string hintText;
+	public string displayText;
 	public float cost;
+
+	public abstract IEnumerator CastCoroutine();
 }
