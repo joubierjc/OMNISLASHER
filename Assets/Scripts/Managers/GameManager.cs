@@ -17,7 +17,19 @@ public class GameManager : UnitySingleton<GameManager> {
 		TimeManager.Instance.Init();
 		PoolManager.Instance.Init();
 
+		Init();
+	}
+
+	public void Init() {
 		StartCoroutine(Round());
+	}
+
+	public void EndGame() {
+		StopCoroutine(Round());
+		var enemies = FindObjectsOfType<Enemy>();
+		foreach (var item in enemies) {
+			item.gameObject.SetActive(false);
+		}
 	}
 
 	public void AddScore(int value) {
@@ -40,7 +52,13 @@ public class GameManager : UnitySingleton<GameManager> {
 	}
 
 	private void SpawnEnemy() {
-		var go = PoolManager.Instance.GetObjectFrom("CloseEnemy");
+		GameObject go;
+		if (Random.Range(0f, 1f) > 0.75f) {
+			go = PoolManager.Instance.GetObjectFrom("RangedEnemy");
+		}
+		else {
+			go = PoolManager.Instance.GetObjectFrom("CloseEnemy");
+		}
 		if (!go) {
 			return;
 		}

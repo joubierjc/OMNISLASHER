@@ -74,10 +74,12 @@ public class Enemy : MonoBehaviour {
 	protected virtual IEnumerator SpawnAnim() {
 		rb.isKinematic = true;
 		foreach (var item in colliders) {
+			item.gameObject.SetActive(true);
 			item.enabled = false;
 		}
 		for (int i = 0; i < 2; i++) {
 			foreach (var item in meshRenderers) {
+				item.gameObject.SetActive(true);
 				item.enabled = true;
 			}
 			yield return new WaitForSeconds(.25f);
@@ -91,6 +93,10 @@ public class Enemy : MonoBehaviour {
 		}
 		foreach (var item in colliders) {
 			item.enabled = true;
+			var health = item.GetComponent<Health>();
+			if (health) {
+				health.Value = 1f; // this is used to reset hp on protections
+			}
 		}
 		rb.isKinematic = false;
 	}

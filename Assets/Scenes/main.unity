@@ -677,6 +677,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 114413589695899514, guid: b992567711433214ab663c9b5ffce8ac,
+        type: 2}
+      propertyPath: maxHealth
+      value: 1000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b992567711433214ab663c9b5ffce8ac, type: 2}
   m_IsPrefabParent: 0
@@ -1175,7 +1180,7 @@ MonoBehaviour:
   CurrentPlayer: {fileID: 1220822771}
   score: 0
   scoreMultiplier: 1
-  intervaleBetweenSpawn: 2
+  intervaleBetweenSpawn: 1.5
 --- !u!1 &873860864
 GameObject:
   m_ObjectHideFlags: 0
