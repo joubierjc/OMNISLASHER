@@ -62,6 +62,15 @@ public class Enemy : MonoBehaviour {
 		}
 	}
 
+	private void OnCollisionEnter(Collision collision) {
+		if (collision.collider.CompareTag("PlayerProjectile")) {
+			var dmg = collision.collider.GetComponent<Damager>();
+			if (dmg) {
+				hp.Value -= dmg.value;
+			}
+		}
+	}
+
 	protected virtual IEnumerator SpawnAnim() {
 		rb.isKinematic = true;
 		foreach (var item in colliders) {

@@ -10,6 +10,7 @@ public class Player : MonoBehaviour {
 	public float maxHealth;
 	public float currentEnergy;
 	public float maxEnergy;
+	public float energyMultiplier;
 
 	[Header("Movement")]
 	public float speed;
@@ -84,7 +85,7 @@ public class Player : MonoBehaviour {
 
 		if (health) {
 			health.Value -= dmg.value;
-			currentEnergy = Mathf.Clamp(currentEnergy + dmg.value, 0f, maxEnergy);
+			currentEnergy = Mathf.Clamp(currentEnergy + (dmg.value * energyMultiplier), 0f, maxEnergy);
 			HudManager.Instance.ChangeEnergyDisplay(currentEnergy);
 		}
 	}

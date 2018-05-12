@@ -7,9 +7,8 @@ using UnityEngine;
 [RequireComponent(typeof(Player))]
 public class SkillController : MonoBehaviour {
 
-	[Header("Order skills from higher cost to lower cost")]
 	public Skill[] skills;
-	public Skill currentSkill;
+	private Skill currentSkill;
 
 	private Player player;
 

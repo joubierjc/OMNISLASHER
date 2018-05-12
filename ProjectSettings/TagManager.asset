@@ -4,8 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Shot
   - Enemy
+  - EnemyProjectile
+  - PlayerProjectile
   layers:
   - Default
   - TransparentFX
@@ -19,7 +20,7 @@ TagManager:
   - Enemy
   - EnemyDamager
   - Limits
-  - 
+  - PlayerProjectile
   - 
   - 
   - 

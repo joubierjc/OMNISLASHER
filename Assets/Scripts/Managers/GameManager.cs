@@ -7,6 +7,8 @@ public class GameManager : UnitySingleton<GameManager> {
 	public Boundary boundary;
 	public Player CurrentPlayer;
 	public int score;
+	public int scoreMultiplier;
+	public float intervaleBetweenSpawn;
 
 	private Tween scoreTween;
 
@@ -25,7 +27,7 @@ public class GameManager : UnitySingleton<GameManager> {
 				score = x;
 				HudManager.Instance.RefreshScoreText();
 			},
-			score + value,
+			score + (value * scoreMultiplier),
 			HudManager.Instance.transitionsDuration
 		);
 	}
@@ -33,7 +35,7 @@ public class GameManager : UnitySingleton<GameManager> {
 	private IEnumerator Round() {
 		while (true) {
 			SpawnEnemy();
-			yield return new WaitForSeconds(2.5f);
+			yield return new WaitForSeconds(intervaleBetweenSpawn);
 		}
 	}
 

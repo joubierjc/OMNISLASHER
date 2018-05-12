@@ -8,11 +8,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd5d85edc1d472a42a83ee81178f7fcd, type: 3}
-  m_Name: Bonus
+  m_Script: {fileID: 11500000, guid: 5a5f94ae6dd526747989992e7d829eff, type: 3}
+  m_Name: RangedEnemy
   m_EditorClassIdentifier: 
-  holder: {fileID: 0}
-  displayText: Bonus
-  cost: 25
-  health: 1
-  score: 50
+  identifier: RangedEnemy
+  template: {fileID: 1339880845404112, guid: 89ff355f6489a0342b6e1b54c0786a2f, type: 2}
+  initialSize: 10
+  canGrow: 1

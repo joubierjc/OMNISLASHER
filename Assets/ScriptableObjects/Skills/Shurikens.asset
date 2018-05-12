@@ -8,11 +8,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd5d85edc1d472a42a83ee81178f7fcd, type: 3}
-  m_Name: Bonus
+  m_Script: {fileID: 11500000, guid: df50a107ec427bc4e985077d1185f3c7, type: 3}
+  m_Name: Shurikens
   m_EditorClassIdentifier: 
   holder: {fileID: 0}
-  displayText: Bonus
-  cost: 25
-  health: 1
-  score: 50
+  displayText: Shurikens
+  cost: 50
+  poolIdentifier: PlayerProjectile
+  numberOfShots: 5
+  radius: 50
+  timeBetweenShots: 0.1
+  layer:
+    serializedVersion: 2
+    m_Bits: 512

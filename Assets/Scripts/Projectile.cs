@@ -22,6 +22,7 @@ public class Projectile : MonoBehaviour {
 		if (trail) {
 			trail.Clear();
 		}
+		StartCoroutine(DisableCoroutine());
 	}
 
 	private void OnCollisionEnter(Collision collision) {

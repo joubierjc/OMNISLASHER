@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 114502726604838978}
   m_Layer: 9
   m_Name: RangedEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -695,7 +695,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 1
-  reward: 20
+  reward: 30
   rotationFactor: 0.05
   speed: 1
   meshRenderers:
@@ -712,6 +712,7 @@ MonoBehaviour:
   - {fileID: 65570898345930954}
   trails:
   - {fileID: 96629463178853392}
+  poolIdentifier: EnemyProjectile
   fleeFactor: 25
   shotSpawn: {fileID: 4113873664215752}
   shotInterval: 3

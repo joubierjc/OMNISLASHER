@@ -8,6 +8,9 @@ public class PlayerModifier : Skill {
 	public int score;
 
 	public override IEnumerator CastCoroutine() {
+		if (!holder.gameObject.activeInHierarchy) {
+			yield break;
+		}
 		var player = holder.GetComponent<Player>();
 		if(!player) {
 			yield break;

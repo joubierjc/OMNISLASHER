@@ -4,6 +4,7 @@ using UnityEngine;
 public class RangedEnemy : Enemy {
 
 	[Header("Ranged Settings")]
+	public string poolIdentifier;
 	public float fleeFactor;
 	public Transform shotSpawn;
 	public float shotInterval;
@@ -36,7 +37,7 @@ public class RangedEnemy : Enemy {
 	}
 
 	private void SpawnProjectile() {
-		var go = PoolManager.Instance.GetObjectFrom("EnemyProjectile");
+		var go = PoolManager.Instance.GetObjectFrom(poolIdentifier);
 		if (!go) {
 			return;
 		}

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   holder: {fileID: 0}
   displayText: OMNISLASH
-  cost: 120
-  radius: 50
+  cost: 75
+  radius: 100
   timeBetweenStrikes: 0.2
   layer:
     serializedVersion: 2
