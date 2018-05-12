@@ -15,8 +15,12 @@
 - [x] Pools
 	- [x] RangedEnemy
 	- [x] PlayerProjectile
-- [ ] Gamemodes
-	- [ ] classic (3hp, score normal)
-	- [ ] lifestealer (hp remplacé par un chrono, on damage -2 sec, on hit +1sec, score normal)
-	- [ ] juggernaut (on damage -> death, score*4)
-- [ ] randomize spanwing pool
+- [x] Gamemodes
+	- [x] classic (3hp, score normal)
+	- [x] juggernaut (on damage -> death, score*4)
+- [x] randomize spanwing pool
+- [ ] musique de fond
+- [ ] sound effects
+	- [ ] slash
+	- [ ] shot
+	- [ ] hit

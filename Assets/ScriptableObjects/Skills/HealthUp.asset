@@ -15,4 +15,4 @@ MonoBehaviour:
   displayText: Regen
   cost: 25
   health: 1
-  score: 0
+  score: 50

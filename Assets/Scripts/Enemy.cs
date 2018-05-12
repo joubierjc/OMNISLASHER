@@ -63,7 +63,8 @@ public class Enemy : MonoBehaviour {
 	}
 
 	private void OnCollisionEnter(Collision collision) {
-		if (collision.collider.CompareTag("PlayerProjectile")) {
+		var projectile = collision.collider.GetComponent<Projectile>();
+		if (projectile) {
 			var dmg = collision.collider.GetComponent<Damager>();
 			if (dmg) {
 				hp.Value -= dmg.value;

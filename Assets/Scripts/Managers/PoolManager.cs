@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class PoolManager : UnitySingleton<PoolManager> {
+public class PoolManager : FakeUnitySingleton<PoolManager> {
 
 	public ObjectPool[] _pools;
 

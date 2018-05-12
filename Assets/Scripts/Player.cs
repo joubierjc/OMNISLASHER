@@ -11,6 +11,7 @@ public class Player : MonoBehaviour {
 	public float currentEnergy;
 	public float maxEnergy;
 	public float energyMultiplier;
+	public float energyOverTimeMultiplier;
 
 	[Header("Movement")]
 	public float speed;
@@ -33,7 +34,7 @@ public class Player : MonoBehaviour {
 	}
 
 	private void Update() {
-		currentEnergy = Mathf.Clamp(currentEnergy + (Time.deltaTime * 2), 0f, maxEnergy);
+		currentEnergy = Mathf.Clamp(currentEnergy + (Time.deltaTime * energyOverTimeMultiplier), 0f, maxEnergy);
 		HudManager.Instance.ChangeEnergyDisplay(currentEnergy);
 	}
 
@@ -54,6 +55,10 @@ public class Player : MonoBehaviour {
 		HudManager.Instance.ChangeHealthDisplay(hp.Value);
 		currentEnergy = 0f;
 		HudManager.Instance.ChangeEnergyDisplay(currentEnergy);
+	}
+
+	private void OnDisable() {
+		GameManager.Instance.EndGame();
 	}
 
 	private void OnCollisionEnter(Collision collision) {

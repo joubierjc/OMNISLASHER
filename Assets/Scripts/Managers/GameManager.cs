@@ -2,13 +2,16 @@
 using System.Collections;
 using UnityEngine;
 
-public class GameManager : UnitySingleton<GameManager> {
+public class GameManager : FakeUnitySingleton<GameManager> {
 
 	public Boundary boundary;
 	public Player CurrentPlayer;
 	public int score;
 	public int scoreMultiplier;
+	public float timeBeforeSpawn;
 	public float intervaleBetweenSpawn;
+
+	private bool isPlaying;
 
 	private Tween scoreTween;
 
@@ -21,15 +24,17 @@ public class GameManager : UnitySingleton<GameManager> {
 	}
 
 	public void Init() {
+		isPlaying = true;
 		StartCoroutine(Round());
 	}
 
 	public void EndGame() {
-		StopCoroutine(Round());
+		isPlaying = false;
 		var enemies = FindObjectsOfType<Enemy>();
 		foreach (var item in enemies) {
 			item.gameObject.SetActive(false);
 		}
+		HudManager.Instance.DisplayEndGame();
 	}
 
 	public void AddScore(int value) {
@@ -45,7 +50,8 @@ public class GameManager : UnitySingleton<GameManager> {
 	}
 
 	private IEnumerator Round() {
-		while (true) {
+		yield return new WaitForSeconds(timeBeforeSpawn);
+		while (isPlaying) {
 			SpawnEnemy();
 			yield return new WaitForSeconds(intervaleBetweenSpawn);
 		}

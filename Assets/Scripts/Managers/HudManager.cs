@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
 
-public class HudManager : UnitySingleton<HudManager> {
+public class HudManager : FakeUnitySingleton<HudManager> {
 
 	[Header("Settings")]
 	public float transitionsDuration;
@@ -15,6 +15,9 @@ public class HudManager : UnitySingleton<HudManager> {
 	public Slider energyBarSlider;
 	public TextMeshProUGUI energyText;
 	public TextMeshProUGUI specialText;
+	public GameObject PlayGroup;
+	public GameObject EndGameGroup;
+	public TextMeshProUGUI EndScoreText;
 
 	private Tween scoreTween;
 	private Tween healthBarTween;
@@ -46,5 +49,11 @@ public class HudManager : UnitySingleton<HudManager> {
 
 	public void RefreshSpecialText(string newValue) {
 		specialText.text = newValue;
+	}
+
+	public void DisplayEndGame() {
+		PlayGroup.SetActive(false);
+		EndGameGroup.SetActive(true);
+		EndScoreText.SetText("{0:0}", GameManager.Instance.score);
 	}
 }

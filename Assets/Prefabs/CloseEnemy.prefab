@@ -336,7 +336,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 1
   reward: 20
-  rotationFactor: 0.025
+  rotationFactor: 0.03
   speed: 8
   meshRenderers:
   - {fileID: 23959266497662198}
