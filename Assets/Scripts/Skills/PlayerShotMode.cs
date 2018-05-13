@@ -23,6 +23,7 @@ public class PlayerShotMode : Skill {
 				enemies.Add(enemy);
 			}
 		}
+		GameManager.Instance.shurikenStartSound.Play();
 		for (int i = 0; i < enemies.Count; i++) {
 			if (i > numberOfShots - 1) {
 				break;

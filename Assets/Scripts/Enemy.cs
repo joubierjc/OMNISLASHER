@@ -67,6 +67,7 @@ public class Enemy : MonoBehaviour {
 		if (projectile) {
 			var dmg = collision.collider.GetComponent<Damager>();
 			if (dmg) {
+				GameManager.Instance.RandomSlashAudio();
 				hp.Value -= dmg.value;
 			}
 		}

@@ -8,6 +8,9 @@ public class PlayerModifier : Skill {
 	public int score;
 
 	public override IEnumerator CastCoroutine() {
+		if(health == 0f && score == 0) {
+			yield break;
+		}
 		if (!holder.gameObject.activeInHierarchy) {
 			yield break;
 		}
@@ -15,6 +18,7 @@ public class PlayerModifier : Skill {
 		if(!player) {
 			yield break;
 		}
+		GameManager.Instance.regenSound.Play();
 		var hp = player.GetComponent<Health>();
 		hp.Value = Mathf.Clamp(hp.Value + health, 0f, player.maxHealth);
 		GameManager.Instance.AddScore(score);

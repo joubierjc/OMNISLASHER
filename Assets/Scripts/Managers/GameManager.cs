@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class GameManager : FakeUnitySingleton<GameManager> {
+public class GameManager : UnityFakeSingleton<GameManager> {
 
 	public Boundary boundary;
 	public Player CurrentPlayer;
@@ -10,6 +10,14 @@ public class GameManager : FakeUnitySingleton<GameManager> {
 	public int scoreMultiplier;
 	public float timeBeforeSpawn;
 	public float intervaleBetweenSpawn;
+
+	public AudioSource combatMusic;
+	public AudioSource stopSound;
+	public AudioSource slashSound;
+	public AudioSource omnislashStartSound;
+	public AudioSource shurikenStartSound;
+	public AudioSource regenSound;
+	public AudioSource hitSound;
 
 	private bool isPlaying;
 
@@ -26,15 +34,19 @@ public class GameManager : FakeUnitySingleton<GameManager> {
 	public void Init() {
 		isPlaying = true;
 		StartCoroutine(Round());
+		combatMusic.Play();
 	}
 
 	public void EndGame() {
 		isPlaying = false;
+		Cursor.visible = true;
 		var enemies = FindObjectsOfType<Enemy>();
 		foreach (var item in enemies) {
 			item.gameObject.SetActive(false);
 		}
 		HudManager.Instance.DisplayEndGame();
+		combatMusic.Stop();
+		stopSound.Play();
 	}
 
 	public void AddScore(int value) {
@@ -43,6 +55,7 @@ public class GameManager : FakeUnitySingleton<GameManager> {
 			x => {
 				score = x;
 				HudManager.Instance.RefreshScoreText();
+				HudManager.Instance.RefreshEndScoreText();
 			},
 			score + (value * scoreMultiplier),
 			HudManager.Instance.transitionsDuration
@@ -74,5 +87,15 @@ public class GameManager : FakeUnitySingleton<GameManager> {
 			Random.Range(boundary.Zmin, boundary.Zmax)
 		);
 		go.SetActive(true);
+	}
+
+	public void RandomSlashAudio() {
+		slashSound.pitch = Random.Range(0.8f, 1f);
+		slashSound.Play();
+	}
+
+	public void RandomHitAudio() {
+		hitSound.pitch = Random.Range(0.8f, 1f);
+		hitSound.Play();
 	}
 }

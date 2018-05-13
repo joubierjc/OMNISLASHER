@@ -15,7 +15,7 @@ MonoBehaviour:
   displayText: OMNISLASH
   cost: 75
   radius: 100
-  timeBetweenStrikes: 0.15
+  timeBetweenStrikes: 0.2
   layer:
     serializedVersion: 2
     m_Bits: 512

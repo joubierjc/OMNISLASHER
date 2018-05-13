@@ -1,7 +1,7 @@
 ﻿using DG.Tweening;
 using UnityEngine;
 
-public class TimeManager : FakeUnitySingleton<TimeManager> {
+public class TimeManager : UnityFakeSingleton<TimeManager> {
 
 	public float initialTimeScale = 1f;
 	public float slowMotionTimeScale = 0.2f;

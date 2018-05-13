@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class FakeUnitySingleton<T> : MonoBehaviour where T : Component {
+public class UnityFakeSingleton<T> : MonoBehaviour where T : Component {
 
 	public static T Instance { get; private set; }
 

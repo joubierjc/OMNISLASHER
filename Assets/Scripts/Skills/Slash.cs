@@ -25,6 +25,7 @@ public class Slash : Skill {
 		if (collider) {
 			collider.enabled = false;
 		}
+		GameManager.Instance.omnislashStartSound.Play();
 		foreach (var item in enemies) {
 			holder.DOMove(
 				new Vector3(item.gameObject.transform.position.x, holder.position.y, item.gameObject.transform.position.z),
@@ -35,6 +36,7 @@ public class Slash : Skill {
 				hp.Value = 0f;
 			}
 			item.gameObject.SetActive(false);
+			GameManager.Instance.RandomSlashAudio();
 			yield return new WaitForSeconds(timeBetweenStrikes);
 		}
 		if (collider) {

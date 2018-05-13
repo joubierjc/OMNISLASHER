@@ -84,11 +84,13 @@ public class Player : MonoBehaviour {
 		}
 
 		if (damager) {
+			GameManager.Instance.RandomHitAudio();
 			hp.Value -= damager.value;
 			HudManager.Instance.ChangeHealthDisplay(hp.Value);
 		}
 
 		if (health) {
+			GameManager.Instance.RandomSlashAudio();
 			health.Value -= dmg.value;
 			currentEnergy = Mathf.Clamp(currentEnergy + (dmg.value * energyMultiplier), 0f, maxEnergy);
 			HudManager.Instance.ChangeEnergyDisplay(currentEnergy);

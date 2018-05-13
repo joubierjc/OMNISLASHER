@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
 
-public class HudManager : FakeUnitySingleton<HudManager> {
+public class HudManager : UnityFakeSingleton<HudManager> {
 
 	[Header("Settings")]
 	public float transitionsDuration;
@@ -39,6 +39,10 @@ public class HudManager : FakeUnitySingleton<HudManager> {
 		scoreText.SetText("{0:0}", GameManager.Instance.score);
 	}
 
+	public void RefreshEndScoreText() {
+		EndScoreText.SetText("{0:0}", GameManager.Instance.score);
+	}
+
 	public void RefreshHealthText(float newValue) {
 		healthText.SetText("{0:0}", newValue);
 	}
@@ -52,8 +56,14 @@ public class HudManager : FakeUnitySingleton<HudManager> {
 	}
 
 	public void DisplayEndGame() {
-		PlayGroup.SetActive(false);
-		EndGameGroup.SetActive(true);
-		EndScoreText.SetText("{0:0}", GameManager.Instance.score);
+		if (PlayGroup) {
+			PlayGroup.SetActive(false);
+		}
+		if (EndGameGroup) {
+			EndGameGroup.SetActive(true);
+		}
+		if (EndScoreText) {
+			RefreshEndScoreText();
+		}
 	}
 }

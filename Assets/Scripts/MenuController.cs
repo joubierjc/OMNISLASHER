@@ -5,7 +5,7 @@ public class MenuController : MonoBehaviour {
 
 	private void Update() {
 		if (Input.GetKeyDown(KeyCode.Escape)) {
-			SceneManager.LoadScene("mainmenu");
+			MainMenu();
 		}
 	}
 
@@ -14,14 +14,17 @@ public class MenuController : MonoBehaviour {
 	}
 
 	public void MainMenu() {
+		Cursor.visible = true;
 		SceneManager.LoadScene("mainmenu");
 	}
 
 	public void ClassicMode() {
+		Cursor.visible = false;
 		SceneManager.LoadScene("classicmode");
 	}
 
 	public void JuggernautMode() {
+		Cursor.visible = false;
 		SceneManager.LoadScene("juggernautmode");
 	}
 

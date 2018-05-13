@@ -240,7 +240,7 @@ MonoBehaviour:
   currentEnergy: 0
   maxEnergy: 75
   energyMultiplier: 2
-  energyOverTimeMultiplier: 1
+  energyOverTimeMultiplier: 2
   speed: 20
   decelerationFactor: 0.5
   bumpFactor: 10
